@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.repository != 'simonw/shot-scrape r-template' }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.10
@@ -33,7 +34,6 @@ jobs:
         shot-scraper install
     - uses: actions/github-script@v6
       name: Create shots.yml if missing on first run
-      if: ${{ github.repository != 'simonw/shot-scrape r-template' }}
       with:
         script: |
           const fs = require('fs');
@@ -47,8 +47,6 @@ jobs:
               }
               fs.writeFileSync('shots.yml', line + '\n');
           }
-          // And delete this workflow
-          fs.unlinkSync('.github/workflows/setup.yml');
     - name: Take shots
       run: |
         if test -f shots.yml; then
