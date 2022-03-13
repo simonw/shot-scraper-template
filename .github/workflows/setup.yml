@@ -15,12 +15,18 @@ jobs:
           script: |
             const fs = require('fs');
             if (!fs.existsSync('shots.yml')) {
-                const description = payload.repository.description;
+                const desc = context.payload.repository.description;
                 let line = '';
-                if (desc.startsWith('http://') or desc.startsWith('https://')) {
+                if (desc && (desc.startsWith('http://') || desc.startsWith('https://'))) {
                     line = `- url: ${desc}`;
                 } else {
-                    line = `# - url: https://www.example.com/`;
+                    line = '# - url: https://www.example.com/';
                 }
                 fs.writeFileSync('shots.yml', line + '\n');
             }
+            // And delete this workflow
+            fs.unlinkSync('.github/workflows/setup.yml');
+      - name: Force push new repo contents
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "shot-scraper with shots.yml"
