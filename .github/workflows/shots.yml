@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  shot-scraper:
     runs-on: ubuntu-latest
-    if: ${{ github.repository != 'simonw/shot-scrape r-template' }}
+    if: ${{ github.repository != 'simonw/shot-scraper-template' }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.10
