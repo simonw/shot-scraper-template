@@ -18,9 +18,9 @@ jobs:
                 const desc = context.payload.repository.description;
                 let line = '';
                 if (desc && (desc.startsWith('http://') || desc.startsWith('https://'))) {
-                    line = `- url: ${desc}`;
+                    line = `- url: ${desc}` + '\n   output: shot.png';
                 } else {
-                    line = '# - url: https://www.example.com/';
+                    line = '# - url: https://www.example.com/\n#   output: shot.png';
                 }
                 fs.writeFileSync('shots.yml', line + '\n');
             }
