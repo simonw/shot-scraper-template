@@ -1,0 +1,26 @@
+name: Create shots.yml on first run
+
+on: [push]
+
+jobs:
+  init:
+    if: ${{ github.repository != 'simonw/shot-scraper-template' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            if (!fs.existsSync('shots.yml')) {
+                const description = payload.repository.description;
+                let line = '';
+                if (desc.startsWith('http://') or desc.startsWith('https://')) {
+                    line = `- url: ${desc}`;
+                } else {
+                    line = `# - url: https://www.example.com/`;
+                }
+                fs.writeFileSync('shots.yml', line + '\n');
+            }
