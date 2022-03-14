@@ -1,4 +1,4 @@
-name: Take screnshots
+name: Take screenshots
 
 on:
   push:
