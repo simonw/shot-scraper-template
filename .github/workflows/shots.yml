@@ -43,15 +43,13 @@ jobs:
               if (desc && (desc.startsWith('http://') || desc.startsWith('https://'))) {
                   line = `- url: ${desc}` + '\n  output: shot.png\n  height: 800';
               } else {
-                  line = '# - url: https://www.example.com/\n#  output: shot.png\n#  height: 800';
+                  line = '# - url: https://www.example.com/\n#   output: shot.png\n#   height: 800';
               }
               fs.writeFileSync('shots.yml', line + '\n');
           }
     - name: Take shots
       run: |
-        if test -f shots.yml; then
-          shot-scraper multi shots.yml
-        fi
+        shot-scraper multi shots.yml
     - name: Commit and push
       run: |-
         git config user.name "Automated"
