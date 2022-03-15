@@ -61,4 +61,24 @@ To add additional screenshots, add them to the YAML file like this:
   output: example.png
   height: 800
 ```
+Other useful options include:
+
+- `wait: 3000` to add a 3 second delay before taking the shot (in case some things need more time to load)
+- `javascript: ...` to execute custom JavaScript before taking the shot - to activate menus or hide elements or similar
+- `quality: 80` to save a smaller, lower quality JPEG image
+
+This example takes a shot of the LA Times homepage after hiding ads and the terms of service prompt:
+
+```yaml
+- url: https://www.latimes.com/
+  output: latimes.jpg
+  width: 1600
+  height: 1600
+  quality: 80
+  wait: 2000
+  javascript: |
+    document.querySelectorAll(
+      '[data-ad-rendered],#ensNotifyBanner'
+    ).forEach(el => el.style.display = 'none')
+```
 Further options are described in the [shot-scraper README file](https://github.com/simonw/shot-scraper#taking-multiple-screenshots).
