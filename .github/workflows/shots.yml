@@ -49,13 +49,12 @@ jobs:
           }
     - name: Take shots
       run: |
-        shot-scraper multi shots.yml
-    - name: Commit and push
-      run: |-
-        git config user.name "Automated"
-        git config user.email "actions@users.noreply.github.com"
-        git add -A
-        timestamp=$(date -u)
-        git commit -m "${timestamp}" || exit 0
-        git pull --rebase
-        git push
+        mkdir output
+        cd output
+        shot-scraper multi ../websites.yml
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: screenshots
+        FOLDER: output
