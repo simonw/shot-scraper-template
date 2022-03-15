@@ -12,7 +12,7 @@ Visit https://github.com/simonw/shot-scraper-template/generate
 
 <img width="500" alt="Screenshot of the interface for creating a new repository with this template, showing the URL pasted into the description field" src="https://user-images.githubusercontent.com/9599/158208859-ee12e174-5c5f-40c0-b5f2-e3df15f1ee4f.png">
 
-Pick a name for your new repository, and paste **the URL** of the page you would like to take screenshots of into the **description field**.
+Pick a name for your new repository, and paste **the URL** of the page you would like to take screenshots of into the **description field** (including the `http://` or `https://`).
 
 Then click **Create repository from template**.
 
