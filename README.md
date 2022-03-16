@@ -23,6 +23,12 @@ Your new repository will be created, and a script will run which will do the fol
 
 You can then edit that `shots.yml` file to customize your screenshot, or add more URLs - see below.
 
+If the script does not run when the repository is first created you may need to **Enable Actions** first:
+
+- Click the "Actions" tab
+- Clice "Enable Actions"
+- Run the "Take screenshots" workflow as described below
+
 ## Re-taking the screenshot
 
 To re-take the screenshot:
@@ -33,7 +39,6 @@ To re-take the screenshot:
 - Click the green "Run workflow" button
 
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/9599/158210618-4b361520-4fbb-4a90-ab8c-f729776dd8f0.png">
-
 
 The repository will keep a history of every previous version of each screenshot, which is useful for keeping track of visual changes to a page.
 
