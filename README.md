@@ -87,3 +87,23 @@ This example takes a shot of the LA Times homepage after hiding ads and the term
     ).forEach(el => el.style.display = 'none')
 ```
 Further options are described in the [shot-scraper README file](https://github.com/simonw/shot-scraper#taking-multiple-screenshots).
+
+## Installing fonts for more languages
+
+The default Ubuntu used by GitHub Actions does not include fonts for many languages, including Chinese and Japanese.
+
+You can modify the `shots.yml` file to install extra fonts by adding this section, between the "Cache Playwright browsers" and "Install dependencies" steps:
+
+```yaml
+    - name: Cache Playwright browsers
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/ms-playwright/
+        key: ${{ runner.os }}-browsers
+    - name: Install extra fonts
+      run: |
+        sudo apt-get install fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+```
