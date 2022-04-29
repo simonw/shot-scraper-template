@@ -19,7 +19,7 @@ Then click **Create repository from template**.
 Your new repository will be created, and a script will run which will do the following:
 
 - Add a `shots.yml` file to your repository containing the URL of the page you requested
-- Take a screenshot of that URL and add that to you repository as a file called `shot.png`
+- Take a screenshot of that URL and add that to your repository as a file called `shot.png`
 
 You can then edit that `shots.yml` file to customize your screenshot, or add more URLs - see below.
 
